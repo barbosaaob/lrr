@@ -14,7 +14,7 @@ def exact_alm_lrr_l1v2(D, A, lamb=None, tol=1e-7, maxIter=1000, display=False):
     norm_two = np.linalg.norm(Y, 2)
     norm_inf = np.linalg.norm(Y.flatten(1), np.inf) / lamb
     dual_norm = max(norm_two, norm_inf)
-    Y = Y / dual_norm
+    Y /= dual_norm
 
     W = np.zeros((k, n))
 
@@ -25,7 +25,7 @@ def exact_alm_lrr_l1v2(D, A, lamb=None, tol=1e-7, maxIter=1000, display=False):
     tolProj1 = 1e-6 * dnorm
 
     anorm = np.linalg.norm(A, 2)
-    tolProj2 = 1e-6 * dnorm/anorm
+    tolProj2 = 1e-6 * dnorm / anorm
 
     mu = 0.5 / norm_two  # this one can be tuned
     rho = 6              # this one can be tuned
@@ -55,7 +55,7 @@ def exact_alm_lrr_l1v2(D, A, lamb=None, tol=1e-7, maxIter=1000, display=False):
 
             diagS = S
             svp = len(np.flatnonzero(diagS > 1.0 / mu))
-            diagS = np.maximum(0, diagS - 1.0/mu)
+            diagS = np.maximum(0, diagS - 1.0 / mu)
 
             if svp < 0.5:  # svp = 0
                 svp = 1
@@ -72,7 +72,7 @@ def exact_alm_lrr_l1v2(D, A, lamb=None, tol=1e-7, maxIter=1000, display=False):
                                                                lamb/mu)
 
             if np.linalg.norm(E_hat - temp_E, 'fro') < tolProj1 and \
-               np.norm(Z_hat - temp_Z) < tolProj2:
+               np.linalg.norm(Z_hat - temp_Z) < tolProj2:
                 break
 
         H1 = D - A.dot(Z_hat) - E_hat
@@ -82,8 +82,8 @@ def exact_alm_lrr_l1v2(D, A, lamb=None, tol=1e-7, maxIter=1000, display=False):
         mu = rho * mu
 
         # stop Criterion
-        stopCriterion = max(np.norm(H1, 'fro') / dnorm, np.norm(H2, 'fro') /
-                            dnorm * anorm)
+        stopCriterion = max(np.linalg.norm(H1, 'fro') / dnorm,
+                            np.linalg.norm(H2, 'fro') / dnorm * anorm)
         if display:
             print 'LRR: Iteration', iter, '(', primal_iter, '), mu ', mu, \
                   ', |E|_0 ', np.sum(np.abs(E_hat.flatter(1) > 0)), \
