@@ -12,12 +12,12 @@ def solve_lrr(X, A, lamb, reg=0, alm_type=0, display=False):
 
     if reg == 0:
         if alm_type == 0:
-            Z, E = exact_alm_lrr_l21v2(X, B, lamb, 1e-7, 1000, display)
+            Z, E = exact_alm_lrr_l21v2(X, B, lamb, display=display)
         # else:
         #     Z, E = inexact_alm_lrr_l21(X, B, lamb, display)
     else:
         if alm_type == 0:
-            Z, E = exact_alm_lrr_l1v2(X, B, lamb, 1e-7, 1000, display)
+            Z, E = exact_alm_lrr_l1v2(X, B, lamb, display=display)
         # else:
         #     Z, E = inexact_alm_lrr_l1(X, B, lamb, display)
 
