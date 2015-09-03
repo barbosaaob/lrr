@@ -56,7 +56,7 @@ def exact_alm_lrr_l21v2(D, A, lamb, tol=1e-7, maxIter=1000, display=False):
             diagS = np.maximum(0, diagS - 1.0 / mu)
 
             if svp < 0.5:  # svp = 0
-                svp = 0
+                svp = 1
 
             J_hat = U[:, 0:svp].dot(np.diag(diagS[0:svp]).dot(V[:, 0:svp].T))
 

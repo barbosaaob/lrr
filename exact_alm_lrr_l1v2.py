@@ -58,7 +58,7 @@ def exact_alm_lrr_l1v2(D, A, lamb=None, tol=1e-7, maxIter=1000, display=False):
             diagS = np.maximum(0, diagS - 1.0 / mu)
 
             if svp < 0.5:  # svp = 0
-                svp = 0
+                svp = 1
 
             J_hat = U[:, 0:svp].dot(np.diag(diagS[0:svp]).dot(V[:, 0:svp].T))
 
@@ -86,7 +86,7 @@ def exact_alm_lrr_l1v2(D, A, lamb=None, tol=1e-7, maxIter=1000, display=False):
                             np.linalg.norm(H2, 'fro') / dnorm * anorm)
         if display:
             print 'LRR: Iteration', iter, '(', primal_iter, '), mu ', mu, \
-                  ', |E|_0 ', np.sum(np.abs(E_hat.flatter(1) > 0)), \
+                  ', |E|_0 ', np.sum(np.abs(E_hat.flatten(1) > 0)), \
                   ', stopCriterion ', stopCriterion
 
         if stopCriterion < tol:
