@@ -9,7 +9,7 @@ X = data.T
 A = X
 l = 0.1
 
-Z, E = solve_lrr(X, A, l, display=True)
+Z, E = solve_lrr(X, A, l, reg=1, alm_type=1, display=True)
 
 np.savetxt('/tmp/Z', Z)
 np.savetxt('/tmp/E', E)

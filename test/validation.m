@@ -5,7 +5,7 @@ A = X;
 l = 0.1;
 
 addpath('/home/adriano/workspace/subspace-learning/lrr');
-[Z, E] = solve_lrr(X, A, l, 0, 0, true);
+[Z, E] = solve_lrr(X, A, l, 1, 1, true);
 
 save('/tmp/data', 'data', '-ascii');
 
@@ -16,4 +16,4 @@ EE = load('/tmp/E');
 
 dif_Z = max(max(abs(Z - ZZ)));
 dif_E = max(max(abs(E - EE)));
-disp([dif_Z, dif_E])
+disp(['errors: ', num2str(dif_Z), ' ', num2str(dif_E)])
