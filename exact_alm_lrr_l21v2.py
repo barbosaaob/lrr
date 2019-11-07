@@ -82,9 +82,9 @@ def exact_alm_lrr_l21v2(D, A, lamb, tol=1e-7, maxIter=1000, display=False):
         stopCriterion = max(np.linalg.norm(H1, 'fro') / dnorm,
                             np.linalg.norm(H2, 'fro') / dnorm * anorm)
         if display:
-            print 'LRR: Iteration', iter, '(', primal_iter, '), mu ', mu, \
+            print('LRR: Iteration', iter, '(', primal_iter, '), mu ', mu, \
                   ', |E|_2,0 ', np.sum(np.sum(E_hat ** 2, 1) > 0), \
-                  ', stopCriterion ', stopCriterion
+                  ', stopCriterion ', stopCriterion)
 
         if stopCriterion < tol:
             break

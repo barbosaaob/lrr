@@ -23,7 +23,7 @@ def inexact_alm_lrr_l21(X, A, lamb, display=False):
     # Start main loop
     iter = 0
     if display:
-        print "initial,rank=%f" % np.linalg.matrix_rank(Z)
+        print("initial,rank=%f" % np.linalg.matrix_rank(Z))
 
     while iter < maxIter:
         iter += 1
@@ -50,9 +50,9 @@ def inexact_alm_lrr_l21(X, A, lamb, display=False):
         leq2 = Z - J
         stopC = max(np.max(np.abs(leq1)), np.max(np.abs(leq2)))
         if display and (iter == 1 or np.mod(iter, 50) == 0 or stopC < tol):
-            print "iter", iter, ",mu=", mu, ",rank=", \
+            print("iter", iter, ",mu=", mu, ",rank=", \
                   np.linalg.matrix_rank(Z, tol=1e-3*np.linalg.norm(Z, 2)), \
-                  ",stopALM=", stopC
+                  ",stopALM=", stopC)
 
         if stopC < tol:
             break

@@ -31,5 +31,5 @@ if __name__ == "__main__":
     A = X
     lamb = 0.1
     Z, E = solve_lrr(X, A, lamb)
-    print "Z: ", Z
-    print "E: ", E
+    print("Z: ", Z)
+    print("E: ", E)
